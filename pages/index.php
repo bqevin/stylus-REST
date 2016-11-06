@@ -3,7 +3,6 @@
 // /error_reporting(0);
 //including the database connection file
 include_once("config.php");
-
 //fetching data in descending order (lastest entry first)
 //$result = mysql_query("SELECT * FROM users ORDER BY id DESC"); // mysql_query is deprecated
 $result = mysqli_query($mysqli, "SELECT * FROM updates ORDER BY id DESC"); // using mysqli_query instead
@@ -253,8 +252,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM updates ORDER BY id DESC"); // us
                                 </div>
                                 <div class="profile-info">
                                   <img class="profile-pic" src="'.$res['profilePic'].'">
-                                  <h2 class="hvr-underline-from-center">'.$res['name'].'<span>'.$res['timeStamp'].'</span></h2>
-                                  <div style="max-height:50px; overflow: hidden;">'.$res['status'].'</div>
+                                  <h2 class="hvr-underline-from-center"><span></span></h2>
+                                  <div style="height:90px; overflow: hidden;">'.$res['status'].'</div>
                                   <a href="edit.php?id='.$res['id'].'"><i class="fa fa-pencil fa-2x"></i></a>
                                   <a href=""><i class="fa fa-user fa-2x"></i></a>
                                   <a href="delete.php?id='.$res['id'].'" onClick="return confirm("Are you sure you want to delete?")"><i class="fa fa-trash-o fa-2x"></i></a>

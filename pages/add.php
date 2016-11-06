@@ -9,11 +9,11 @@
 include_once("config.php");
 
 if(isset($_POST['Submit'])) {	
-	$name = "Stylus DJ Awards"; // Hardcoded Data
-	$status=$_POST['status'];
-	$image=$_POST['image'];	
-	$profilePic= "https://pbs.twimg.com/profile_images/506465601066242048/hU6TEG89.jpeg"; //Stylus twitter prof pic
-	$url=$_POST['url'];	
+	$name = mysqli_real_escape_string($mysqli, "Stylus DJ Awards"); // Hardcoded Data
+	$status = mysqli_real_escape_string($mysqli, $_POST['status']);
+	$image = mysqli_real_escape_string($mysqli, $_POST['image']);	
+	$profilePic =mysqli_real_escape_string($mysqli, "https://pbs.twimg.com/profile_images/506465601066242048/hU6TEG89.jpeg"); //Stylus twitter prof pic
+	$url=mysqli_real_escape_string($mysqli, $_POST['url']);	
 		
 	// checking empty fields
 	if(empty($url) || empty($status) || empty($image)) {
@@ -35,13 +35,13 @@ if(isset($_POST['Submit'])) {
 		// if all the fields are filled (not empty) 
 			
 		//insert data to database	
-		$result = mysqli_query($mysqli, "INSERT INTO updates(id,name,status,image,profilePic,url) VALUES(NULL,'$name','$status','$image','$profilePic', '$url')");
-		
+		$sqlCommand = "INSERT INTO `updates` (name, status, image, profilePic, url) VALUES('$name', '$status', '$image', '$profilePic', '$url')" ;
+		$result = mysqli_query($mysqli, $sqlCommand) or die (mysqli_error($mysqli)); 
 		//display success message
-		echo "<font color='green'>Data added successfully. <br>";
-		echo "<br>Name" . $name . "<br>Status" . $status . "<br>Image" . $image . "<br>Profile" . $profilePic . "<br>URL" .$url;
-		echo "<br/><a href='index.php'>View Result</a>";
-		header("Location:index.php?message=success");
+		// echo "<font color='green'>Data added successfully. <br>";
+		// echo "<br>Name" . $name . "<br>Status" . $status . "<br>Image" . $image . "<br>Profile" . $profilePic . "<br>URL" .$url;
+		// echo "<br/><a href='index.php'>View Result</a>";
+	    header("Location:index.php?message=success");
 	}
 }
 ?>
