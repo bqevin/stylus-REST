@@ -9,7 +9,7 @@
 include_once("config.php");
 
 if(isset($_POST['Submit'])) {	
-	$name = "Stylus Deejay Awards"; // $_POST['name']; am hardcoding this to Stylus Deejay Awards
+	$name = "Stylus DJ Awards"; // $_POST['name']; am hardcoding this to Stylus Deejay Awards
 	$status=$_POST['status'];
 	$image=$_POST['image'];	
 	$profilePic= "https://pbs.twimg.com/profile_images/506465601066242048/hU6TEG89.jpeg"; //$_POST['profilePic'] .. Have to hardcode this to Twitter prof pic
@@ -42,10 +42,11 @@ if(isset($_POST['Submit'])) {
 		// if all the fields are filled (not empty) 
 			
 		//insert data to database	
-		$result = mysqli_query($mysqli, "INSERT INTO updates(name,status,image, profilePic, url) VALUES('$name','$status','$image','$profilePic', '$url')");
+		$result = mysqli_query($mysqli, "INSERT INTO updates(name,status,image,profilePic,url,timeStamp) VALUES('$name','$status','$image','$profilePic', '$url', NOW())");
 		
 		//display success message
-		echo "<font color='green'>Data added successfully.";
+		echo "<font color='green'>Data added successfully. <br>";
+		echo "<br>Name" . $name . "<br>Status" . $status . "<br>Image" . $image . "<br>Profile" . $profilePic . "<br>URL" .$url;
 		echo "<br/><a href='index.php'>View Result</a>";
 	}
 }
