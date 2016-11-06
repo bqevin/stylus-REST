@@ -30,6 +30,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM updates ORDER BY id DESC"); // us
 
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- SWAL CSS -->
+    <link href="../css/swal.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
@@ -197,7 +199,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM updates ORDER BY id DESC"); // us
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Stylus DJ Awards | Updates Dashboard</h1> <a data-toggle="modal" data-target="#updateModal" class="pull-right btn btn-lg btn-primary"> New Update</a>
+                    <h1 class="page-header pull-left">Stylus DJ Awards | Updates Dashboard</h1> <a style="margin-top: 10px;" data-toggle="modal" data-target="#updateModal" class="pull-right btn btn-lg btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New Update </a>
                 </div>
                 <!-- /.col-lg-12 -->
                 <!-- Modal -->
@@ -229,6 +231,14 @@ $result = mysqli_query($mysqli, "SELECT * FROM updates ORDER BY id DESC"); // us
                     </div>
 
                   </div>
+                  <?php
+                    //Handle on update created successfully
+                    if (isset($_GET['message'])) {
+                        echo "<script type='text/JavaScript'>
+                        swal('Success!', 'You created an update!', 'success');
+                        </script>";
+                    }
+                  ?>
                 </div>
             </div>
             <!-- /.row -->
@@ -275,7 +285,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM updates ORDER BY id DESC"); // us
     <script src="../vendor/raphael/raphael.min.js"></script>
     <script src="../vendor/morrisjs/morris.min.js"></script>
     <script src="../data/morris-data.js"></script>
-
+    <!-- SwalJavaScript -->
+    <script src="../js/swal.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
