@@ -15,13 +15,13 @@ while($row = mysqli_fetch_array ($result))
         'image' =>  $row['image'],
         'status' =>  $row['status'],
         'profilePic' =>  $row['profilePic'],
-        'timeStamp' =>  $row['timeStamp'],
+        'timeStamp' =>  strtotime($row['timeStamp']),
         'url' =>  $row['url']
     );
     array_push($json, $feed);
 }
 
-$jsonstring = json_encode($json, JSON_PRETTY_PRINT);
+$jsonstring = json_encode(array('feed' => $json));
 echo $jsonstring;
 header('Content-Type: application/json');
 die();
