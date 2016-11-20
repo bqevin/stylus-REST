@@ -15,19 +15,19 @@ if(isset($_POST['Submit'])) {
 	$profilePic =mysqli_real_escape_string($mysqli, "https://pbs.twimg.com/profile_images/506465601066242048/hU6TEG89.jpeg"); //Stylus twitter prof pic
 	$url=mysqli_real_escape_string($mysqli, $_POST['url']);	
 		
-	// checking empty fields
-	if(empty($url) || empty($status) || empty($image)) {
+	// checking empty status
+	if(empty($status)) {
 						
 		if(empty($status)) {
 			echo "<font color='red'>Status field is empty.</font><br/>";
 		}
 		
-		if(empty($image)) {
-			echo "<font color='red'>Poster field is empty.</font><br/>";
-		}
-		if(empty($url)) {
-			echo "<font color='red'>Use 'null' if no URL</font><br/>";
-		}
+		// if(empty($image)) {
+		// 	echo "<font color='red'>Poster field is empty.</font><br/>";
+		// }
+		// if(empty($url)) {
+		// 	echo "<font color='red'>Use 'null' if no URL</font><br/>";
+		// }
 		
 		//link to the previous page
 		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
