@@ -13,20 +13,14 @@ if(isset($_POST['update']))
 	$url=$_POST['url'];	
 	
 	// checking empty fields
-	if(empty($status) || empty($image) || empty($url)) {	
+	if(empty($status)) {	
 
 		
 		if(empty($status)) {
 			echo "<font color='red'>Status field is empty.</font><br/>";
 		}
 		
-		if(empty($image)) {
-			echo "<font color='red'>Image field is empty.</font><br/>";
-		}
-
-		if(empty($url)) {
-			echo "<font color='red'>URL field is empty.</font><br/>";
-		}
+		
 	} else {	
 		//updating the table
 		$result = mysqli_query($mysqli, "UPDATE updates SET status='$status',image='$image',url='$url' WHERE id=$id");

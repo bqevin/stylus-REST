@@ -41,7 +41,7 @@ if(isset($_POST['Submit'])) {
 		// echo "<font color='green'>Data added successfully. <br>";
 		// echo "<br>Name" . $name . "<br>Status" . $status . "<br>Image" . $image . "<br>Profile" . $profilePic . "<br>URL" .$url;
 		// echo "<br/><a href='index.php'>View Result</a>";
-	    header("Location:index.php?message=success");
+	    header("Location: agrigender.net/stylus/index.php");
 	}
 }
 ?>
